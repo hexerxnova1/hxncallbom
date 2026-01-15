@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call Bomber Pro</title>
+    <title>HEX CALL BOM</title>
     <style>
         body { margin: 0; padding: 0; background: #000; color: #ff0000; font-family: monospace; overflow: hidden; }
         canvas { position: absolute; top: 0; left: 0; z-index: -1; }
@@ -16,9 +16,9 @@
 <body>
     <canvas id="matrix"></canvas>
     <div class="container">
-        <h1>CALL BOMBER</h1>
+        <h1>HEX CALLBOM</h1>
         <input type="text" id="target" placeholder="Target Number (e.g. 017...)"><br>
-        <input type="number" id="count" placeholder="Call Amount (Max 10)"><br>
+        <input type="number" id="count" placeholder="Call Amount (Max 5)"><br>
         <button onclick="startProcess()">START ATTACK</button>
         <div id="display">Ready for Attack</div>
     </div>
@@ -30,7 +30,7 @@
             const display = document.getElementById('display');
 
             if(!target || !count) { display.innerText = "Enter target & amount!"; return; }
-            if(count > 10) { display.innerText = "Max limit is 10 calls!"; return; }
+            if(count > 5) { display.innerText = "Max limit is 5 calls!"; return; }
 
             display.innerText = "Call Attack Started...";
 
@@ -45,8 +45,8 @@
                     });
 
                     display.innerText = "Call Sent: " + i;
-                    // কল প্রসেসিং এর জন্য ৩০ সেকেন্ড বিরতি
-                    await new Promise(res => setTimeout(res, 30000)); 
+                    // কল প্রসেসিং এর জন্য ২০ সেকেন্ড বিরতি
+                    await new Promise(res => setTimeout(res, 20000)); 
                 } catch (e) {
                     console.log("Error skipped...");
                 }
