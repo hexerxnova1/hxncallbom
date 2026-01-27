@@ -35,11 +35,17 @@
       backdrop-filter:blur(10px);
       box-shadow:0 18px 60px rgba(0,0,0,.55);
 
-      position: relative;     /* ✅ timeDock inside wrap */
-      padding-top: 64px;      /* ✅ timeDock এর জায়গা */
+      position: relative;
+      padding-top: 100px;   /* ✅ timeDock + text overlap fix */
+      padding-bottom: 24px;
     }
 
-    .topRow{display:flex;gap:16px}
+    .topRow{
+      display:flex;
+      gap:16px;
+      margin-top: 20px;     /* ✅ timeDock এর সাথে লেখা মিশবে না */
+    }
+
     .leftText{flex:1}
     h1{margin:0;font-size:26px}
     .sub{opacity:.9}
@@ -49,6 +55,7 @@
       width:80px;height:80px;border-radius:50%;
       border:2px solid #00ff66;
       overflow:hidden;
+      flex: 0 0 auto;
     }
     .logoBox img{width:100%;height:100%;object-fit:cover}
 
@@ -143,7 +150,7 @@
       position:absolute;
       left:14px;
       top:14px;
-      width:132px;
+      width:140px;          /* একটু বড় */
       padding:10px;
       border-radius:14px;
       text-align:center;
@@ -161,15 +168,18 @@
       font-weight:800;
       font-size:14px;
       letter-spacing:.2px;
+      line-height: 1.2;
+      white-space: nowrap;
     }
 
     .timeDock .timeDate{
       margin-top:4px;
       font-size:12px;
       opacity:.9;
+      white-space: nowrap;
     }
 
-    /* Footer (NO box, NO border) */
+    /* Footer */
     .siteFooter{
       position:fixed;
       bottom:6px;
@@ -180,6 +190,7 @@
       color:#fff;
       z-index:55;
       pointer-events:none;
+      padding: 0 10px;
     }
     .footerLine{display:block;margin-top:4px}
 
@@ -232,16 +243,27 @@
       filter: brightness(1.05);
     }
 
-    /* ✅ Mobile fix */
+    /* ✅ Mobile improvements */
     @media (max-width:480px){
-      .wrap{ padding-top:78px; }
+      .wrap{
+        padding-top: 110px;      /* ✅ top safe space */
+        padding-bottom: 160px;   /* ✅ নিচে আরও স্ক্রল যাবে */
+        margin: 14px auto;
+      }
+
       .timeDock{
         left:12px;
         top:12px;
-        width:128px;
+        width: 142px;
       }
+
+      .topRow{ gap:12px; margin-top: 10px; }
       h1{ font-size:22px; }
-      .topRow{ gap:12px; }
+
+      .siteFooter{
+        bottom: 14px;            /* ✅ footer একটু উপরে */
+        font-size: 11px;
+      }
     }
   </style>
 </head>
@@ -252,7 +274,7 @@
 
   <div class="wrap">
 
-    <!-- ✅ Time moved here (Top-Left inside wrap) -->
+    <!-- ✅ Time moved here -->
     <div class="timeDock">
       <div class="timeClock" id="timeClock">--:--:--</div>
       <div class="timeDate" id="timeDate">--/--/----</div>
@@ -287,7 +309,7 @@
     </form>
   </div>
 
-  <!-- ✅ SUCCESS MODAL (Popup) -->
+  <!-- ✅ SUCCESS MODAL -->
   <div class="modalOverlay" id="successModal" aria-hidden="true">
     <div class="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modalText" id="modalTitle">
@@ -299,7 +321,6 @@
 
   <!-- Social (Bottom Left) -->
   <div class="socialBar">
-    <!-- Facebook -->
     <a class="socialBtn fb"
        href="https://www.facebook.com/CyberSentinelBangladesh"
        target="_blank"
@@ -311,7 +332,6 @@
       </svg>
     </a>
 
-    <!-- Telegram -->
     <a class="socialBtn tg"
        href="https://t.me/+GtSCf-U5YW5kMmI1"
        target="_blank"
@@ -324,10 +344,9 @@
     </a>
   </div>
 
-  <!-- Footer (No box) -->
+  <!-- Footer -->
   <div class="siteFooter">
-    <span class="footerLine footerCopy">© 2026 Cyber Sentinel Bangladesh. All rights reserved.    Developed by HEXER X NOVA</span>
-    <span class="footerLine footerDev"></span>
+    <span class="footerLine footerCopy">© 2026 Cyber Sentinel Bangladesh. All rights reserved. Developed by HEXER X NOVA</span>
   </div>
 
   <script>
