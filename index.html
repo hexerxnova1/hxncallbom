@@ -25,7 +25,6 @@
       z-index:-2;
     }
 
-    /* Main Card */
     .wrap{
       max-width:560px;
       margin:22px auto 120px;
@@ -34,23 +33,21 @@
       background:rgba(16,24,40,.78);
       backdrop-filter:blur(10px);
       box-shadow:0 18px 60px rgba(0,0,0,.55);
-
-      position:relative;
-      padding-top:100px;
-      padding-bottom:18px;
+      position: relative;
+      padding-top: 100px;
+      padding-bottom: 18px;
     }
 
     .topRow{
       display:flex;
       gap:16px;
-      margin-top:20px;
+      margin-top: 20px;
     }
 
     .leftText{flex:1}
     h1{margin:0;font-size:26px}
     .sub{opacity:.9}
 
-    /* Logo */
     .logoBox{
       width:80px;height:80px;border-radius:50%;
       border:2px solid #00ff66;
@@ -59,7 +56,6 @@
     }
     .logoBox img{width:100%;height:100%;object-fit:cover}
 
-    /* Form */
     input,textarea{
       width:100%;
       margin-top:12px;
@@ -71,15 +67,10 @@
     }
     textarea{min-height:140px}
 
-    small.hint{display:block;margin-top:12px;opacity:.9}
-    small.hint.red{color:#ff8a8a;opacity:1}
-
-    /* msg colors */
     #msg{margin-top:10px;font-weight:700}
     .ok{color:#7cfc9a}
     .bad{color:#ff8a8a}
 
-    /* Button */
     button{
       width:100%;
       margin-top:16px;
@@ -91,11 +82,10 @@
       cursor:pointer;
     }
 
-    /* Social */
     .socialBar{
       position:fixed;
       left:16px;
-      bottom:74px;          /* ✅ footer থেকে আলাদা */
+      bottom:64px;
       display:flex;
       gap:10px;
       z-index:60;
@@ -104,120 +94,59 @@
     .socialBtn{
       width:44px;height:44px;border-radius:14px;
       display:grid;place-items:center;text-decoration:none;
-
       background:rgba(16,24,40,.75);
       border:1px solid rgba(0,255,120,.22);
-
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.45),
-        0 0 0 6px rgba(0,255,120,.06);
-
+      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 6px rgba(0,255,120,.06);
       backdrop-filter:blur(10px);
       transition:transform .15s ease, filter .15s ease;
     }
     .socialBtn:hover{transform:translateY(-2px);filter:brightness(1.07)}
     .socialBtn svg{width:22px;height:22px;fill:#e8eefc}
-
     .socialBtn.fb{
       border-color: rgba(80,140,255,.55);
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.45),
-        0 0 20px rgba(80,140,255,.18);
+      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 20px rgba(80,140,255,.18);
     }
     .socialBtn.tg{
       border-color: rgba(0,200,255,.55);
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.45),
-        0 0 20px rgba(0,200,255,.18);
+      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 20px rgba(0,200,255,.18);
     }
 
-    /* Time */
     .timeDock{
       position:absolute;
-      left:14px;
-      top:14px;
+      left:14px; top:14px;
       width:140px;
       padding:10px;
       border-radius:14px;
       text-align:center;
       z-index:5;
-
       background:rgba(16,24,40,.78);
       border:1px solid rgba(0,255,120,.25);
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.45),
-        0 0 0 6px rgba(0,255,120,.06);
+      box-shadow:0 12px 30px rgba(0,0,0,.45), 0 0 0 6px rgba(0,255,120,.06);
       backdrop-filter:blur(10px);
     }
+    .timeDock .timeClock{font-weight:800;font-size:14px;letter-spacing:.2px;white-space:nowrap}
+    .timeDock .timeDate{margin-top:4px;font-size:12px;opacity:.9;white-space:nowrap}
 
-    .timeDock .timeClock{
-      font-weight:800;
-      font-size:14px;
-      letter-spacing:.2px;
-      line-height:1.2;
-      white-space:nowrap;
-    }
-    .timeDock .timeDate{
-      margin-top:4px;
-      font-size:12px;
-      opacity:.9;
-      white-space:nowrap;
-    }
-
-    /* Footer */
     .siteFooter{
       position:fixed;
-      bottom:12px;
+      bottom:10px;
       left:50%;
       transform:translateX(-50%);
       z-index:55;
       pointer-events:none;
-
       width:min(560px, 95vw);
       padding:8px 12px;
       border-radius:12px;
-
       background: rgba(16,24,40,.55);
       border: 1px solid rgba(0,255,120,.18);
       backdrop-filter: blur(10px);
       box-shadow: 0 12px 30px rgba(0,0,0,.35);
     }
 
-    .footerTrack{
-      overflow:hidden;
-      white-space:nowrap;
-      font-size:12px;
-      color:#fff;
-      text-align:center;
-    }
+    .footerTrack{overflow:hidden;white-space:nowrap;text-align:center;font-size:12px;color:#fff}
     .footerText{display:inline-block}
 
-    /* মোবাইলে Developed by দেখা যাবে (Marquee) */
-    @media (max-width:480px){
-      .wrap{ margin:14px auto 120px; padding-top:110px; }
-      .socialBar{ left:12px; bottom:74px; }
-      .siteFooter{ width:92vw; }
-      .footerTrack{ font-size:11px; text-align:left; }
-      .footerText{
-        padding-left:100%;
-        animation: footerMarquee 16s linear infinite;
-      }
-      @keyframes footerMarquee{
-        0%{transform:translateX(0)}
-        100%{transform:translateX(-100%)}
-      }
-      h1{font-size:22px}
-      .topRow{gap:12px;margin-top:10px}
-      .timeDock{left:12px;top:12px;width:142px}
-    }
-    @media (prefers-reduced-motion: reduce){
-      .footerText{animation:none !important; padding-left:0 !important;}
-      .footerTrack{text-align:center;}
-    }
-
-    /* =========================
-       ✅ Success Modal (Updated)
-       ========================= */
+    /* ✅ Success Modal */
     .modalOverlay{
       position: fixed;
       inset: 0;
@@ -225,90 +154,86 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      background: rgba(0,0,0,.60);
+      background: rgba(0,0,0,.55);
       backdrop-filter: blur(6px);
-      padding:14px;
+      padding: 14px;
     }
-
-    .modalOverlay.show{
-      display: flex;
-    }
+    .modalOverlay.show{ display:flex; }
 
     .modalBox{
-      position:relative;
       width: min(520px, 92vw);
-      border-radius: 18px;
-      padding: 20px 18px 18px;
-      background: rgba(16,24,40,.95);
+      border-radius: 16px;
+      padding: 18px 18px 14px;
+      background: rgba(16,24,40,.92);
       border: 1px solid rgba(0,255,120,.22);
-      box-shadow: 0 22px 60px rgba(0,0,0,.60);
-    }
-
-    /* ✕ close button */
-    .modalClose{
-      position:absolute;
-      top:10px;
-      right:10px;
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      border:1px solid rgba(0,255,120,.35);
-      background:rgba(16,24,40,.9);
-      color:#e8eefc;
-      font-size:22px;
-      cursor:pointer;
-      line-height:30px;
-      text-align:center;
-    }
-    .modalClose:hover{
-      color:#ff6b6b;
-      background:rgba(20,30,50,.95);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55);
     }
 
     .modalText{
-      color:#e8eefc;
-      font-size:14px;
-      line-height:1.6;
-    }
-    .modalText .line1{
-      font-weight:800;
-      margin-bottom:8px;
-    }
-    .modalText .line2{
-      margin-top:6px;
-      font-weight:800;
-      color:#ff6b6b;
+      color: #e8eefc;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    /* Join Here button */
+    .modalText .line1{
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .modalText .line2{
+      margin-top: 6px;
+      font-weight: 800;
+      color: #ff6b6b;
+    }
+
+    /* ✅ Join Here button (Telegram icon) */
     .joinBtn{
-      margin-top:16px;
-      width:100%;
+      margin-top: 14px;
+      width: 100%;
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding:13px;
-      border-radius:16px;
-      font-weight:900;
+
       text-decoration:none;
-      color:#07110c;
-      background:linear-gradient(135deg,#00ff66,#00c8ff);
+      border:0;
+      cursor:pointer;
+
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      color: #07110c;
+      background: linear-gradient(135deg,#00ff66,#00c8ff);
     }
-    .joinBtn svg{width:20px;height:20px;fill:#07110c}
-    .joinBtn:hover{filter:brightness(1.05)}
-    @media (max-width:480px){ .modalText{font-size:13px} }
+
+    .joinBtn svg{
+      width: 20px;
+      height: 20px;
+      fill: #07110c;
+    }
+
+    .joinBtn:hover{ filter: brightness(1.05); }
+
+    @media (max-width:480px){
+      .wrap{ margin: 14px auto 120px; padding-top:110px; }
+      .socialBar{ bottom: 74px; left: 12px; }
+      .siteFooter{ bottom: 12px; width: 92vw; }
+      .footerTrack{ font-size: 11px; text-align:left; }
+      .footerText{ padding-left:100%; animation: footerMarquee 16s linear infinite; }
+      @keyframes footerMarquee{ 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .footerText{ animation:none !important; padding-left:0 !important; }
+      .footerTrack{ text-align:center; }
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- MATRIX BACKGROUND -->
   <canvas id="matrix"></canvas>
 
   <div class="wrap">
-
-    <!-- Time -->
     <div class="timeDock">
       <div class="timeClock" id="timeClock">--:--:--</div>
       <div class="timeDate" id="timeDate">--/--/----</div>
@@ -319,7 +244,6 @@
         <h1>CSB Agent Report Box</h1>
         <p class="sub">এখানে CSB Agent সম্পর্কিত অভিযোগ/রিপোর্ট জমা দিন।</p>
       </div>
-
       <div class="logoBox">
         <img src="logo.png" alt="CSB Logo" />
       </div>
@@ -346,36 +270,26 @@
   <!-- ✅ UPDATED SUCCESS MODAL -->
   <div class="modalOverlay" id="successModal" aria-hidden="true">
     <div class="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-
-      <button class="modalClose" id="modalCloseBtn" aria-label="Close">&times;</button>
-
       <div class="modalText" id="modalTitle">
-        <div class="line1">
-          আপনার রিপোর্ট গ্রহণ করা হয়েছে। ৭২ ঘণ্টার মধ্যে ইমেইলে কনফার্মেশন মেসেজ পাঠানো হবে
-        </div>
-        <div class="line2">
-          🔴 জরুরি প্রয়োজনে নিচের Join Here বাটনে ক্লিক করুন
-        </div>
+        <div class="line1">আপনার রিপোর্ট গ্রহণ করা হয়েছে। ৭২ ঘণ্টার মধ্যে ইমেইলে কনফার্মেশন মেসেজ পাঠানো হবে</div>
+        <div class="line2">🔴 জরুরি প্রয়োজনে নিচের Join Here বাটনে ক্লিক করুন</div>
       </div>
 
-      <a class="joinBtn" id="joinHereBtn" href="#" target="_blank" rel="noopener noreferrer">
+      <!-- ✅ Join Here button (Telegram icon) -->
+      <a class="joinBtn" id="joinHereBtn" href="TELEGRAM_JOIN_LINK" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M21.9 4.6c.2.1.2.4.2.6l-3.1 14.7c-.2.9-1.1 1.2-1.9.8l-4.9-3.6-2.4 2.3c-.2.2-.4.3-.7.3l.4-5.6 10.2-9.2c.2-.2 0-.3-.2-.2L7.2 12.2 2.8 10.8c-.9-.3-.9-1.5.1-1.9L20.7 4c.5-.2.9-.2 1.2-.1z"/>
         </svg>
         Join Here
       </a>
-
     </div>
   </div>
 
-  <!-- Social (Bottom Left) -->
   <div class="socialBar">
     <a class="socialBtn fb"
        href="https://www.facebook.com/CyberSentinelBangladesh"
-       target="_blank"
-       rel="noopener noreferrer"
-       title="Facebook"
-       aria-label="Facebook">
+       target="_blank" rel="noopener noreferrer"
+       title="Facebook" aria-label="Facebook">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.6c0-2.4 1.4-3.8 3.6-3.8 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4V12H18l-.6 3h-2.9v7A10 10 0 0 0 22 12z"/>
       </svg>
@@ -383,17 +297,14 @@
 
     <a class="socialBtn tg"
        href="https://t.me/+GtSCf-U5YW5kMmI1"
-       target="_blank"
-       rel="noopener noreferrer"
-       title="Telegram"
-       aria-label="Telegram">
+       target="_blank" rel="noopener noreferrer"
+       title="Telegram" aria-label="Telegram">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M21.9 4.6c.2.1.2.4.2.6l-3.1 14.7c-.2.9-1.1 1.2-1.9.8l-4.9-3.6-2.4 2.3c-.2.2-.4.3-.7.3l.4-5.6 10.2-9.2c.2-.2 0-.3-.2-.2L7.2 12.2 2.8 10.8c-.9-.3-.9-1.5.1-1.9L20.7 4c.5-.2.9-.2 1.2-.1z"/>
       </svg>
     </a>
   </div>
 
-  <!-- Footer -->
   <div class="siteFooter" aria-hidden="true">
     <div class="footerTrack">
       <span class="footerText">© 2026 Cyber Sentinel Bangladesh. All rights reserved. Developed by HEXER X NOVA</span>
@@ -401,16 +312,12 @@
   </div>
 
   <script>
-    // =========================
-    // ✅ Join Here Link (এখানে তোমার গ্রুপ লিংক বসাও)
-    // =========================
+    // 🔧 এখানে তোমার Join link বসাও (TELEGRAM_JOIN_LINK এর বদলে)
     const TELEGRAM_JOIN_LINK = "https://t.me/your_group_link_here";
     const joinBtn = document.getElementById("joinHereBtn");
     if (joinBtn) joinBtn.href = TELEGRAM_JOIN_LINK;
 
-    // =========================
-    // MATRIX BACKGROUND
-    // =========================
+    // MATRIX
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
@@ -450,9 +357,7 @@
       drops = Array(columns).fill(1);
     });
 
-    // =========================
     // Live Time (BD)
-    // =========================
     function startClockBD() {
       const timeEl = document.getElementById("timeClock");
       const dateEl = document.getElementById("timeDate");
@@ -484,47 +389,34 @@
     }
     document.addEventListener("DOMContentLoaded", startClockBD);
 
-    // =========================
-    // ✅ Modal controls
-    // =========================
-    const successModal = document.getElementById("successModal");
-    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    // Modal open/close helpers
+    function openSuccessModal() {
+      const modal = document.getElementById("successModal");
+      if (!modal) return;
 
-    function openSuccessModal(){
-      if (!successModal) return;
-      successModal.classList.add("show");
-      successModal.setAttribute("aria-hidden","false");
-      modalCloseBtn?.focus?.();
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+
+      // click outside close
+      modal.onclick = (e) => { if (e.target === modal) closeSuccessModal(); };
+      document.addEventListener("keydown", escCloseOnce);
     }
 
-    function closeSuccessModal(){
-      if (!successModal) return;
-      successModal.classList.remove("show");
-      successModal.setAttribute("aria-hidden","true");
+    function closeSuccessModal() {
+      const modal = document.getElementById("successModal");
+      if (!modal) return;
+
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.removeEventListener("keydown", escCloseOnce);
     }
 
-    // close: ✕
-    if (modalCloseBtn) modalCloseBtn.onclick = closeSuccessModal;
+    function escCloseOnce(e) { if (e.key === "Escape") closeSuccessModal(); }
 
-    // close: outside click
-    if (successModal){
-      successModal.onclick = (e) => {
-        if (e.target === successModal) closeSuccessModal();
-      };
-    }
-
-    // close: ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSuccessModal();
-    });
-
-    // =========================
-    // Form Submit (Protected)
-    // =========================
+    // Form Submit
     const form = document.getElementById("complaintForm");
     const msg = document.getElementById("msg");
     const btn = document.getElementById("btn");
-
     let submitting = false;
 
     const MAX_MB = 10;
@@ -607,7 +499,6 @@
             return;
           }
 
-          // ✅ SUCCESS
           form.reset();
           openSuccessModal();
         } catch (err) {
