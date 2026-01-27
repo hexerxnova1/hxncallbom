@@ -167,12 +167,36 @@
       background: rgba(16,24,40,.92);
       border: 1px solid rgba(0,255,120,.22);
       box-shadow: 0 22px 60px rgba(0,0,0,.55);
+
+      position: relative; /* ✅ Cross বসানোর জন্য জরুরি */
+    }
+
+    /* ✅ NEW: ✕ Close Icon */
+    .modalClose{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:1px solid rgba(0,255,120,.35);
+      background:rgba(16,24,40,.9);
+      color:#e8eefc;
+      font-size:22px;
+      cursor:pointer;
+      line-height:30px;
+      text-align:center;
+    }
+    .modalClose:hover{
+      color:#ff6b6b;
+      background:rgba(20,30,50,.95);
     }
 
     .modalText{
       color: #e8eefc;
       font-size: 14px;
       line-height: 1.6;
+      padding-right: 44px; /* ✅ Cross এর নিচে লেখা না ঢোকার জন্য */
     }
 
     .modalText .line1{
@@ -270,6 +294,10 @@
   <!-- ✅ UPDATED SUCCESS MODAL -->
   <div class="modalOverlay" id="successModal" aria-hidden="true">
     <div class="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+      <!-- ✅ NEW: ✕ Close button -->
+      <button class="modalClose" id="modalCloseBtn" aria-label="Close">&times;</button>
+
       <div class="modalText" id="modalTitle">
         <div class="line1">আপনার রিপোর্ট গ্রহণ করা হয়েছে। ৭২ ঘণ্টার মধ্যে ইমেইলে কনফার্মেশন মেসেজ পাঠানো হবে</div>
         <div class="line2">🔴 জরুরি প্রয়োজনে নিচের Join Here বাটনে ক্লিক করুন</div>
@@ -396,6 +424,10 @@
 
       modal.classList.add("show");
       modal.setAttribute("aria-hidden", "false");
+
+      // ✅ NEW: ✕ button close (bind every open - safe)
+      const closeBtn = document.getElementById("modalCloseBtn");
+      if (closeBtn) closeBtn.onclick = () => closeSuccessModal();
 
       // click outside close
       modal.onclick = (e) => { if (e.target === modal) closeSuccessModal(); };
